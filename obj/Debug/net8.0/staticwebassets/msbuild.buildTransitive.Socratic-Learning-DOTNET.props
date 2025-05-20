@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Socratic-Learning-DOTNET.props" />
+</Project>
