@@ -15,7 +15,7 @@ public class Message
     public string role { get; set; }
 
     [Required]
-    public string content { get; set; }
+    public string Content { get; set; }
 
     [Required]
     public DateTime timestamp { get; set; }

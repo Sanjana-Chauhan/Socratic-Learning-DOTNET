@@ -49,7 +49,7 @@ namespace Socratic_Learning_DOTNET.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("content")
+                    b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
 

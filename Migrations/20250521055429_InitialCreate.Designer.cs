@@ -12,7 +12,7 @@ using SOCRATIC_LEARNING_DOTNET.Data;
 namespace Socratic_Learning_DOTNET.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250519180320_InitialCreate")]
+    [Migration("20250521055429_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,7 +52,7 @@ namespace Socratic_Learning_DOTNET.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("content")
+                    b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
 

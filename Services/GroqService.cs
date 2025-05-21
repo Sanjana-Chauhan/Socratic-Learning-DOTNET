@@ -16,7 +16,7 @@ public class GroqService
         _apiKey = config["ApiKeys:Groq"];
     }
 
-    public async Task<AIResponse> GetGroqChatCompletionAsync(string userMessage)
+    public async Task<AIResponse> GetGroqChatCompletionAsync(IEnumerable<Message> messages)
     {
         var request = new HttpRequestMessage(
             HttpMethod.Post,
@@ -26,14 +26,17 @@ public class GroqService
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
         string systemPrompt = File.ReadAllText("utils/AiMentorPrompt.txt");
 
+        var messageList = new List<object> { new { role = "system", content = systemPrompt } };
+
+        foreach (var msg in messages)
+        {
+            messageList.Add(new { role = msg.role.ToLower(), content = msg.Content });
+        }
+
         var requestBody = new
         {
-            model = "llama3-8b-8192", // or "llama3-70b-8192"
-            messages = new[]
-            {
-                new { role = "system", content = systemPrompt },
-                new { role = "user", content = userMessage },
-            },
+            model = "llama3-8b-8192",
+            messages = messageList,
             temperature = 0.5,
         };
 
@@ -54,22 +57,26 @@ public class GroqService
         try
         {
             using var doc = JsonDocument.Parse(content);
-            var message = doc
+            var messageContent = doc
                 .RootElement.GetProperty("choices")[0]
                 .GetProperty("message")
                 .GetProperty("content")
                 .GetString();
 
-            Console.WriteLine($"Raw message string: {message}");
+            Console.WriteLine($"Raw message string: {messageContent}");
 
-
-            var aiResponse = JsonSerializer.Deserialize<AIResponse>(message ?? "");
-            return aiResponse
-                ?? new AIResponse
-                {
-                    Explanation = "No explanation",
-                    FollowUpQuestion = "Can you ask again?",
-                };
+            // Try parsing as JSON
+            try
+            {
+                var responseDoc = JsonDocument.Parse(messageContent ?? "{}");
+                var responseText = responseDoc.RootElement.GetProperty("Response").GetString();
+                return new AIResponse { Response = responseText ?? "No response provided." };
+            }
+            catch
+            {
+                // If not JSON, fallback to raw text
+                return new AIResponse { Response = messageContent ?? "No response provided." };
+            }
         }
         catch (Exception ex)
         {

@@ -32,7 +32,7 @@ namespace Socratic_Learning_DOTNET.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     conversationId = table.Column<Guid>(type: "uuid", nullable: false),
                     role = table.Column<string>(type: "text", nullable: false),
-                    content = table.Column<string>(type: "text", nullable: false),
+                    Content = table.Column<string>(type: "text", nullable: false),
                     timestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
