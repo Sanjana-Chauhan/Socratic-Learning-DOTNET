@@ -22,7 +22,7 @@ OUTPUT FORMAT RULES (Strictly enforced):
 - No text or markdown before or after the JSON
 - Only include `"Summary"` field after 8-9 questions or at session end
 
-
+If the prompt recieved is "" empty then send a list of some interesting topic the user can ask about.in the defined format only.
 Always respond in **exactly this JSON format**:
 {
   "Response": "Your explanation or guiding statement. Then a Socratic question to make the learner reflect."

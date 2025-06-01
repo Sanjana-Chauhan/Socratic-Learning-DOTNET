@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Socratic-Learning-DOTNET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f87c211b47805c9ca6e8d8f6aa072af9225af31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51bcd2d4c90ce845855cb5ff5aa75f9645db7ceb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Socratic-Learning-DOTNET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Socratic-Learning-DOTNET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

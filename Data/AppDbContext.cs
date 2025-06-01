@@ -11,5 +11,6 @@ namespace SOCRATIC_LEARNING_DOTNET.Data
 
         public DbSet<Conversation> Conversations { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

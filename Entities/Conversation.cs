@@ -13,6 +13,10 @@ public class Conversation
     public string UserId { get; set; }
 
     [Required]
+    [MaxLength(100)] // optional: limit title length
+    public string Title { get; set; }
+
+    [Required]
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }

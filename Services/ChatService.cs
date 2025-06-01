@@ -24,6 +24,7 @@ public class ChatService : IChatService
             UserId = userId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
+            Title= "New Conversation"
         };
         _db.Conversations.Add(c);
         await _db.SaveChangesAsync();
